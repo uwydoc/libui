@@ -73,17 +73,17 @@ $(OUT): $(OFILES) | $(OUTDIR)
 # TODO can we put /Fd$@.pdb in a variable?
 $(OBJDIR)/%.c.o: $$(subst _,/,%).c $(HFILES) | $(OBJDIR)
 ifeq ($(NODEBUG),1)
-	@cl -Fo:$@ -c $< $(CFLAGS)
+	@cl -Fo$@ -c $< $(CFLAGS)
 else
-	@cl -Fo:$@ -c $< $(CFLAGS) -Fd$@.pdb
+	@cl -Fo$@ -c $< $(CFLAGS) -Fd$@.pdb
 endif
 	@echo ====== Compiled $<
 
 $(OBJDIR)/%.cpp.o: $$(subst _,/,%).cpp $(HFILES) | $(OBJDIR)
 ifeq ($(NODEBUG),1)
-	@cl -Fo:$@ -c $< $(CXXFLAGS)
+	@cl -Fo$@ -c $< $(CXXFLAGS)
 else
-	@cl -Fo:$@ -c $< $(CXXFLAGS) -Fd$@.pdb
+	@cl -Fo$@ -c $< $(CXXFLAGS) -Fd$@.pdb
 endif
 	@echo ====== Compiled $<
 

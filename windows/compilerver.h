@@ -4,7 +4,16 @@
 // VS2013 is needed for va_copy().
 #ifdef _MSC_VER
 #if _MSC_VER < 1800
-#error Visual Studio 2013 or higher is required to build libui.
+// NOTE 2016-01-29 |va_copy| is not used in Windows, so no problem
+//#error Visual Studio 2013 or higher is required to build libui.
+
+// For 'drawtext.cpp'
+#ifdef __cplusplus
+#include <dwrite.h>
+// SEMI_LIGHT not declared/implemented, however it should locate between LIGHT and NORMAL
+DWRITE_FONT_WEIGHT DWRITE_FONT_WEIGHT_SEMI_LIGHT = (DWRITE_FONT_WEIGHT) ((DWRITE_FONT_WEIGHT_LIGHT+DWRITE_FONT_WEIGHT_NORMAL) / 2);
+#endif
+
 #endif
 #endif
 
