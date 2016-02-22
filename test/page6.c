@@ -1,5 +1,11 @@
 // 8 october 2015
-#include <inttypes.h>
+// MSVC does not provide inttypes.h before VS2013, so use the one provided by:
+//  https://code.google.com/p/msinttypes
+#if defined(_MSC_VER) && _MSC_VER < 1800
+# include "inttypes.h"
+#else
+# include <inttypes.h>
+#endif
 #include "test.h"
 
 static uiArea *area;

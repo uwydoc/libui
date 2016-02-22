@@ -329,6 +329,7 @@ static void drawD2DSimpleApp(uiAreaDrawParams *p)
 	uiDrawBrush cornflowerBlue;
 	uiDrawStrokeParams sp;
 	int x, y;
+	double left, top, right, bottom;
 
 	sp.Dashes = NULL;
 	sp.NumDashes = 0;
@@ -361,8 +362,6 @@ static void drawD2DSimpleApp(uiAreaDrawParams *p)
 		uiDrawStroke(p->Context, path, &lightSlateGray, &sp);
 		uiDrawFreePath(path);
 	}
-
-	double left, top, right, bottom;
 
 	left = p->AreaWidth / 2.0 - 50.0;
 	right = p->AreaWidth / 2.0 + 50.0;
